@@ -1,0 +1,35 @@
+<html>
+	<head><link rel="stylesheet" type="text/css" href="stl.css">
+	</head>
+	<body bgcolor="skyblue">
+	<h2 align="center" style="background-color:orange">
+	<a href="home.html">Home</a>&nbsp
+	<a href="logout.php">Logout</a>&nbsp
+	
+	</h2>
+	<h1 align="center"> Enter the Username for Update<h1>
+	<fieldset style="color:red">
+	<legend align="center">Update Form</legend>
+		<form action="update.php" method="POST" align="center">
+		
+	Username<input type="text" name="username" required><br>
+			  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Email<input type="email" name="email" required><br>
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mobile<input type="text" name="mobile" maxlength="10" pattern="[0-9]{10}" title="Please Enter 10 Numbers" required><br>
+		     &nbsp;&nbsp;&nbsp;&nbsp;Passwod<input type="password" name="password" required><br>
+					<input type="submit" value="Submit">
+		</form>
+		</fieldset>
+	</body>
+</html>
+<?php
+	mysql_connect("localhost","root","vennela@137") or die("Ashok check ur connection");
+	mysql_select_db("rathnam") or die("check connection");
+	$username=$_REQUEST['username'];
+	$email=$_REQUEST['email'];
+	$mobile=$_REQUEST['mobile'];
+	$password=$_REQUEST['password'];
+	$q="update users set email='$email',mobile='$mobile',password='$password' where username='$username'";
+	mysql_query($q) or die("failed to open");
+	header("location:greetings1.html");
+?>
+
